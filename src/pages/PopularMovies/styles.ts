@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const PosterImage = styled.Image`
   width: 100%;
-  height: ${ITEM_SIZE * 1.2};
+  height: ${ITEM_SIZE * 1.2}px;
   resize-mode: cover;
   border-radius: 24px;
   margin: 0;

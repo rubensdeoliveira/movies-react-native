@@ -15,7 +15,7 @@ import { useFetch } from '../../hooks/useFetch'
 import IMovie from '../../interfaces/IMovie'
 import { Container, PosterImage } from './styles'
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 const SPACING = 10
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2
@@ -27,9 +27,8 @@ const PopularMovies: React.FC = () => {
 
   const { data, error } = useFetch('discover/movie')
 
-  if (!data) {
-    return <Text>Carregando...</Text>
-  }
+  if (!data) return <Text>Carregando...</Text>
+  if (error) return <Text>Ocorreu um erro</Text>
 
   const movies: IMovie[] = [
     { key: 'fake-image-left' },
@@ -90,8 +89,8 @@ const PopularMovies: React.FC = () => {
                 <Text style={{ fontSize: 24 }} numberOfLines={1}>
                   {item.title}
                 </Text>
-                <Rating rating={item.rating} />
-                <Genres genres={item.genres} />
+                <Rating rating={item.rating || 0} />
+                <Genres genres={item.genres || []} />
                 <Text style={{ fontSize: 12 }} numberOfLines={3}>
                   {item.description}
                 </Text>

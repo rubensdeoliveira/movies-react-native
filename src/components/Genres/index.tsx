@@ -1,10 +1,14 @@
 import * as React from 'react'
 import { Container, Genre, GenreText } from './styles'
 
-export default function Genres({ genres }) {
+interface GenreProps {
+  genres: string[]
+}
+
+const Genres: React.FC<GenreProps> = ({ genres }) => {
   return (
     <Container>
-      {genres.map((genre, i) => {
+      {genres.map((genre) => {
         return (
           <Genre key={genre}>
             <GenreText>{genre}</GenreText>
@@ -14,3 +18,5 @@ export default function Genres({ genres }) {
     </Container>
   )
 }
+
+export default Genres
