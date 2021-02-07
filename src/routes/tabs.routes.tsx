@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 import HomeRoutes from './home.routes'
 import PopularRoutes from './popular.routes'
-import SearchMovies from '../pages/SearchMovies'
+import SearchRoutes from './search.routes'
 
 const Tab = createBottomTabNavigator()
 
@@ -35,7 +35,7 @@ const TabRouter: React.FC = () => {
         activeBackgroundColor: 'black',
       }}
     >
-      <Tab.Screen name="Search" component={SearchMovies} />
+      <Tab.Screen name="Search" component={SearchRoutes} />
       <Tab.Screen name="Home" component={HomeRoutes} />
       <Tab.Screen name="Populares" component={PopularRoutes} />
     </Tab.Navigator>

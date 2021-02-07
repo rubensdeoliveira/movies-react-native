@@ -7,4 +7,5 @@ export default interface IMovie {
   description?: string
   releaseDate?: Date
   genres?: string[]
+  runtime?: number
 }

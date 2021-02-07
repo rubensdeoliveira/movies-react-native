@@ -19,11 +19,29 @@ interface IApiMovie {
   vote_count: number
 }
 
-interface IApiData {
+interface IApiMoviesData {
   page: number
   results: IApiMovie[]
   total_pages: number
   total_results: number
+}
+
+interface IApiMovieData {
+  adult: boolean
+  backdrop_path: string
+  genres: Array<IGenre>
+  id: number
+  original_language: string
+  original_title: string
+  overview: string
+  popularity: number
+  poster_path: string
+  release_date: Date
+  title: string
+  video: boolean
+  vote_average: number
+  vote_count: number
+  runtime: number
 }
 
 interface IGenre {
@@ -36,7 +54,8 @@ interface IApiGenre {
 }
 
 interface IMovieContextData {
-  transformToMoviesList(movieData: IApiData): IMovie[]
+  transformToMovieDetail(movieData: IApiMovieData): IMovie
+  transformToMoviesList(moviesData: IApiMoviesData): IMovie[]
 }
 
 interface IMovieProviderProps {
@@ -46,12 +65,28 @@ interface IMovieProviderProps {
 const MovieContext = createContext({} as IMovieContextData)
 
 export const MovieProvider = ({ children }: IMovieProviderProps) => {
-  const transformToMoviesList = useCallback((movieData: IApiData) => {
+  const transformToMovieDetail = useCallback((movieData: IApiMovieData) => {
+    const movie: IMovie = {
+      key: String(movieData.id),
+      title: movieData.original_title,
+      poster: `https://image.tmdb.org/t/p/w440_and_h660_face${movieData.poster_path}`,
+      backdrop: `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${movieData.backdrop_path}`,
+      rating: movieData.vote_average,
+      description: movieData.overview,
+      releaseDate: movieData.release_date,
+      genres: movieData.genres.map((genre) => genre.name),
+      runtime: movieData.runtime,
+    }
+
+    return movie
+  }, [])
+
+  const transformToMoviesList = useCallback((moviesData: IApiMoviesData) => {
     const emptyList: IMovie[] = []
 
-    if (!movieData || !movieData.results.length) return emptyList
+    if (!moviesData || !moviesData.results.length) return emptyList
 
-    const { results } = movieData
+    const { results } = moviesData
 
     const movies = results.map(
       ({
@@ -89,7 +124,9 @@ export const MovieProvider = ({ children }: IMovieProviderProps) => {
   }, [])
 
   return (
-    <MovieContext.Provider value={{ transformToMoviesList }}>
+    <MovieContext.Provider
+      value={{ transformToMovieDetail, transformToMoviesList }}
+    >
       {children}
     </MovieContext.Provider>
   )

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { StatusBar, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -16,6 +17,8 @@ import {
 
 const SearchMovies: React.FC = () => {
   const [search, setSearch] = useState('')
+
+  const navigation = useNavigation()
 
   const { transformToMoviesList } = useMovie()
 
@@ -55,7 +58,14 @@ const SearchMovies: React.FC = () => {
           keyExtractor={(movie) => movie.key}
           numColumns={3}
           renderItem={({ item: movie }) => (
-            <MoviesContainer key={movie.key}>
+            <MoviesContainer
+              key={movie.key}
+              onPress={() => {
+                navigation.navigate('DetailMovie', {
+                  movie_id: movie.key,
+                })
+              }}
+            >
               <MovieCard>
                 <MoviePoster
                   resizeMode="cover"

@@ -10,12 +10,12 @@ export const Container = styled.View`
 export const Genre = styled.View`
   padding: 2px 6px;
   border-radius: 14px;
-  border: 1px solid #ccc;
+  border: 1.2px solid white;
   margin-right: 4px;
   margin-bottom: 4px;
 `
 
 export const GenreText = styled.Text`
-  font-size: 9px;
-  opacity: 0.4;
+  font-size: 10px;
+  color: white;
 `
