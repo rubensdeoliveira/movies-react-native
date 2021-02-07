@@ -1,15 +1,21 @@
+import 'react-native-gesture-handler'
+
 import React from 'react'
 
+import { NavigationContainer } from '@react-navigation/native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import AppProvider from './hooks'
-import Home from './pages/Home'
-import PopularMovies from './pages/PopularMovies'
+
+import Routes from './routes'
 
 const App: React.FC = () => (
-  <AppProvider>
-    {/* <StatusBar barStyle="light-content" backgroundColor="#312e38" /> */}
-
-    <Home />
-  </AppProvider>
+  <SafeAreaProvider>
+    <NavigationContainer>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+    </NavigationContainer>
+  </SafeAreaProvider>
 )
 
 export default App
