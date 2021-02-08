@@ -55,7 +55,7 @@ This project uses [The Movie DB API](https://developers.themoviedb.org/3/getting
 - Update src > env.example.js with correct values
 - run `yarn`
 - run `yarn android`
-- change src/config/api.ts file to your API_KEY
+- change src/config/api.ts putting your API_KEY
 
 ## License
 
