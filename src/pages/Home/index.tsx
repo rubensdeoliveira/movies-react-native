@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Animated, StatusBar, Text } from 'react-native'
 import Movies from '../../components/Movies'
-import Hero from '../../components/Hero'
+import PosterActions from '../../components/PosterActions'
 import Header from '../../components/Header'
 import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
             ]}
           >
             <Header />
-            <Hero selectedMovie={selectedMovie} />
+            <PosterActions selectedMovie={selectedMovie} />
           </Gradient>
         </>
       </Poster>

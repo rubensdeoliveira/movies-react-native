@@ -32,7 +32,7 @@ export const Separator = styled.View`
   border-radius: 3px;
 `
 
-export const MenuHero = styled.View`
+export const MenuPosterActions = styled.View`
   width: 90%;
   margin-top: 15px;
   flex-direction: row;

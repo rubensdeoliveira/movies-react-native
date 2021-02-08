@@ -6,7 +6,7 @@ import IMovie from '../../interfaces/IMovie'
 import {
   Button,
   Container,
-  MenuHero,
+  MenuPosterActions,
   MenuTag,
   ButtonPlay,
   Separator,
@@ -15,11 +15,11 @@ import {
   TextButtonPlay,
 } from './styles'
 
-interface HeroProps {
+interface PosterActionsProps {
   selectedMovie: IMovie
 }
 
-const Hero: React.FC<HeroProps> = ({ selectedMovie }) => {
+const PosterActions: React.FC<PosterActionsProps> = ({ selectedMovie }) => {
   const navigation = useNavigation()
 
   return (
@@ -35,8 +35,14 @@ const Hero: React.FC<HeroProps> = ({ selectedMovie }) => {
           </>
         )}
       </Tags>
-      <MenuHero>
-        <ButtonPlay>
+      <MenuPosterActions>
+        <ButtonPlay
+          onPress={() => {
+            navigation.navigate('WatchPage', {
+              movie_id: selectedMovie.key,
+            })
+          }}
+        >
           <FAIcon name="play" size={23} />
           <TextButtonPlay>Assistir</TextButtonPlay>
         </ButtonPlay>
@@ -51,9 +57,9 @@ const Hero: React.FC<HeroProps> = ({ selectedMovie }) => {
           <Icon name="infocirlceo" size={22} color="#FFF" />
           <TextButton>Saiba mais</TextButton>
         </Button>
-      </MenuHero>
+      </MenuPosterActions>
     </Container>
   )
 }
 
-export default Hero
+export default PosterActions

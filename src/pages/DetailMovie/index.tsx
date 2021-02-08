@@ -1,6 +1,5 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {
   Container,
@@ -24,6 +23,7 @@ interface Params {
 }
 
 const DetailMovie: React.FC = () => {
+  const navigation = useNavigation()
   const { transformToMovieDetail } = useMovie()
   const { selectedCategorie } = useCategorie()
 
@@ -52,7 +52,15 @@ const DetailMovie: React.FC = () => {
       {movie.genres ? <Genres genres={movie.genres} /> : null}
       <ButtonPlay>
         <Icon name="play" size={18} color="#fff" />
-        <ButtonPlayText>Assistir</ButtonPlayText>
+        <ButtonPlayText
+          onPress={() => {
+            navigation.navigate('WatchPage', {
+              movie_id: movie.key,
+            })
+          }}
+        >
+          Assistir
+        </ButtonPlayText>
       </ButtonPlay>
       <Description numberOfLines={3}>{movie.description}</Description>
     </Container>
