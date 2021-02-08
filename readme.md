@@ -12,15 +12,15 @@ Movies and series application. With this app you can search for movies and serie
   </a>
 </p>
 
-<!-- <div>
-  <img src="repo/imgs/image1.png" alt="demo" height="425">
-  <img src="repo/imgs/image2.png" alt="demo" height="425">
-  <img src="repo/imgs/image3.png" alt="demo" height="425">
-  <img src="repo/imgs/image4.png" alt="demo" height="425">
-  <img src="repo/imgs/image5.png" alt="demo" height="425">
-  <img src="repo/imgs/image6.png" alt="demo" height="425">
-  <img src="repo/imgs/image7.png" alt="demo" height="425">
-</div> -->
+<img src="repo/imgs/1.png" alt="demo" height="425">
+<img src="repo/imgs/2.png" alt="demo" height="425">
+<img src="repo/imgs/3.png" alt="demo" height="425">
+<img src="repo/imgs/1.gif" alt="demo" height="425">
+<img src="repo/imgs/2.gif" alt="demo" height="425">
+<img src="repo/imgs/3.gif" alt="demo" height="425">
+<img src="repo/imgs/4.gif" alt="demo" height="425">
+<img src="repo/imgs/5.gif" alt="demo" height="425">
+<img src="repo/imgs/6.gif" alt="demo" height="425">
 
 <hr />
 

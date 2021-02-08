@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native'
 import Backdrop from '../../components/Backdrop'
+import Error from '../../components/Error'
 import Genres from '../../components/Genres'
 import Loading from '../../components/Loading'
 import Rating from '../../components/Rating'
@@ -33,8 +34,14 @@ const PopularMovies: React.FC = () => {
 
   const { data, error } = useFetch(`${selectedCategorie}/popular`)
 
+  if (error)
+    return (
+      <Error
+        title="Erro ao carregar página"
+        description="Ocorreu um erro inesperado ao carregar a página, tente novamente mais tarde"
+      />
+    )
   if (!data) return <Loading />
-  if (error) return <Text>Ocorreu um erro</Text>
 
   const movies: IMovie[] = [
     { key: 'fake-image-left' },

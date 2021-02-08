@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Animated, StatusBar, Text } from 'react-native'
+import { Animated, StatusBar } from 'react-native'
 import Movies from '../../components/Movies'
 import PosterActions from '../../components/PosterActions'
 import Header from '../../components/Header'
@@ -10,6 +10,7 @@ import { Container, Poster, Gradient, AnimatedImage } from './styles'
 import { getGenresList } from '../../constants/genresList'
 import { useCategorie } from '../../hooks/categorie'
 import Loading from '../../components/Loading'
+import Error from '../../components/Error'
 
 const Home: React.FC = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null)
@@ -90,9 +91,14 @@ const Home: React.FC = () => {
   const trending: IMovie[] = transformToMoviesList(trendingMovies)
   const movies: IMovie[] = transformToMoviesList(discoverMovies)
 
-  if (!selectedMovie || !trending || !movies) return <Loading />
   if (discoverMoviesError || trendingMoviesError)
-    return <Text>{discoverMovies}</Text>
+    return (
+      <Error
+        title="Erro ao carregar página"
+        description="Ocorreu um erro inesperado ao carregar a página, tente novamente mais tarde"
+      />
+    )
+  if (!selectedMovie || !trending || !movies) return <Loading />
 
   return (
     <Container>

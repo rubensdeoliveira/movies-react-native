@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { StatusBar, Text } from 'react-native'
+import { StatusBar } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Error from '../../components/Error'
 import { useCategorie } from '../../hooks/categorie'
 import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
@@ -30,7 +31,13 @@ const SearchMovies: React.FC = () => {
       : `discover/${selectedCategorie}`,
   )
 
-  if (error) return <Text>Ocorreu um erro</Text>
+  if (error)
+    return (
+      <Error
+        title="Erro ao carregar página"
+        description="Ocorreu um erro inesperado ao carregar a página, tente novamente mais tarde"
+      />
+    )
 
   const movies: IMovie[] = transformToMoviesList(data)
 
@@ -47,6 +54,7 @@ const SearchMovies: React.FC = () => {
         onChangeText={(text) => setSearch(text)}
         value={search}
         containerStyle={{ backgroundColor: 'black' }}
+        clearIcon={<Icon name="close" size={20} color="#999" />}
         searchIcon={
           <Icon
             name="search"
