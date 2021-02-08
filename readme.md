@@ -12,8 +12,6 @@ Movies and series application. With this app you can search for movies and serie
   </a>
 </p>
 
-# Images
-
 <div styl>
   <img src="repo/imgs/1.png" alt="demo" height="425" hspace="20">
   <img src="repo/imgs/2.png" alt="demo" height="425" hspace="20">
