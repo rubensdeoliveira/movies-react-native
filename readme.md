@@ -15,19 +15,19 @@ Movies and series application. With this app you can search for movies and serie
 # Images
 
 <div styl>
-  <img src="repo/imgs/1.png" alt="demo" height="425">
-  <img src="repo/imgs/2.png" alt="demo" height="425" style="align-left: 30px;">
-  <img src="repo/imgs/3.png" alt="demo" height="425">
+  <img src="repo/imgs/1.png" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/2.png" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/3.png" alt="demo" height="425" hspace="20">
 </div>
 <div>
-  <img src="repo/imgs/1.gif" alt="demo" height="425">
-  <img src="repo/imgs/2.gif" alt="demo" height="425">
-  <img src="repo/imgs/3.gif" alt="demo" height="425">
+  <img src="repo/imgs/1.gif" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/2.gif" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/3.gif" alt="demo" height="425" hspace="20">
 </div>
 <div>
-  <img src="repo/imgs/4.gif" alt="demo" height="425">
-  <img src="repo/imgs/5.gif" alt="demo" height="425">
-  <img src="repo/imgs/6.gif" alt="demo" height="425">
+  <img src="repo/imgs/4.gif" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/5.gif" alt="demo" height="425" hspace="20">
+  <img src="repo/imgs/6.gif" alt="demo" height="425" hspace="20">
 </div>
 
 
