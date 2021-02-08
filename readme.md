@@ -19,12 +19,17 @@ Movies and series application. With this app you can search for movies and serie
   <img src="repo/imgs/2.png" alt="demo" height="425">
   <img src="repo/imgs/3.png" alt="demo" height="425">
 </div>
-<img src="repo/imgs/1.gif" alt="demo" height="425">
-<img src="repo/imgs/2.gif" alt="demo" height="425">
-<img src="repo/imgs/3.gif" alt="demo" height="425">
-<img src="repo/imgs/4.gif" alt="demo" height="425">
-<img src="repo/imgs/5.gif" alt="demo" height="425">
-<img src="repo/imgs/6.gif" alt="demo" height="425">
+<div style="display: flex">
+  <img src="repo/imgs/1.gif" alt="demo" height="425">
+  <img src="repo/imgs/2.gif" alt="demo" height="425">
+  <img src="repo/imgs/3.gif" alt="demo" height="425">
+</div>
+<div style="display: flex">
+  <img src="repo/imgs/4.gif" alt="demo" height="425">
+  <img src="repo/imgs/5.gif" alt="demo" height="425">
+  <img src="repo/imgs/6.gif" alt="demo" height="425">
+</div>
+
 
 <hr />
 
