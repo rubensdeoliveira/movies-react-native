@@ -10,7 +10,9 @@ import {
 } from 'react-native'
 import Backdrop from '../../components/Backdrop'
 import Genres from '../../components/Genres'
+import Loading from '../../components/Loading'
 import Rating from '../../components/Rating'
+import { useCategorie } from '../../hooks/categorie'
 import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
 import IMovie from '../../interfaces/IMovie'
@@ -25,12 +27,13 @@ const PopularMovies: React.FC = () => {
   const navigation = useNavigation()
 
   const { transformToMoviesList } = useMovie()
+  const { selectedCategorie } = useCategorie()
 
   const scrollX = useRef(new Animated.Value(0)).current
 
-  const { data, error } = useFetch('movie/popular')
+  const { data, error } = useFetch(`${selectedCategorie}/popular`)
 
-  if (!data) return <Text>Carregando...</Text>
+  if (!data) return <Loading />
   if (error) return <Text>Ocorreu um erro</Text>
 
   const movies: IMovie[] = [

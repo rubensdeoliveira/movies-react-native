@@ -28,7 +28,7 @@ const TabRouter: React.FC = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'red',
+        activeTintColor: 'tomato',
         inactiveTintColor: '#fff',
         showLabel: true,
         inactiveBackgroundColor: 'black',

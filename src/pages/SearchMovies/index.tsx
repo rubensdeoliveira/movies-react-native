@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { StatusBar, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { useCategorie } from '../../hooks/categorie'
 import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
 import IMovie from '../../interfaces/IMovie'
@@ -21,9 +22,12 @@ const SearchMovies: React.FC = () => {
   const navigation = useNavigation()
 
   const { transformToMoviesList } = useMovie()
+  const { selectedCategorie } = useCategorie()
 
   const { data, error } = useFetch(
-    search ? `/search/movie?query=${search}` : 'discover/movie',
+    search
+      ? `/search/${selectedCategorie}?query=${search}`
+      : `discover/${selectedCategorie}`,
   )
 
   if (error) return <Text>Ocorreu um erro</Text>

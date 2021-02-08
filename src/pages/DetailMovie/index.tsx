@@ -16,6 +16,8 @@ import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
 import Rating from '../../components/Rating'
 import Genres from '../../components/Genres'
+import { useCategorie } from '../../hooks/categorie'
+import Loading from '../../components/Loading'
 
 interface Params {
   movie_id: string
@@ -23,13 +25,14 @@ interface Params {
 
 const DetailMovie: React.FC = () => {
   const { transformToMovieDetail } = useMovie()
+  const { selectedCategorie } = useCategorie()
 
   const { params } = useRoute()
   const { movie_id } = params as Params
 
-  const { data } = useFetch(`movie/${movie_id}`)
+  const { data } = useFetch(`${selectedCategorie}/${movie_id}`)
 
-  if (!data) return <Text>Carregando...</Text>
+  if (!data) return <Loading />
 
   const movie = transformToMovieDetail(data)
 
@@ -41,7 +44,7 @@ const DetailMovie: React.FC = () => {
         <Body1>
           {movie.releaseDate ? new Date(movie.releaseDate).getFullYear() : null}
         </Body1>
-        <Body1>{movie.runtime}min</Body1>
+        {movie.runtime ? <Body1>{movie.runtime}min</Body1> : null}
         {movie.rating ? (
           <Rating rating={movie.rating} ratingLabel={false} />
         ) : null}

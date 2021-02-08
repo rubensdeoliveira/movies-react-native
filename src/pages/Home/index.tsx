@@ -7,7 +7,9 @@ import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
 import IMovie from '../../interfaces/IMovie'
 import { Container, Poster, Gradient, AnimatedImage } from './styles'
-import { genresList } from '../../constants/genresList'
+import { getGenresList } from '../../constants/genresList'
+import { useCategorie } from '../../hooks/categorie'
+import Loading from '../../components/Loading'
 
 const Home: React.FC = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null)
@@ -16,12 +18,13 @@ const Home: React.FC = () => {
   const [opacity] = useState(new Animated.Value(0))
 
   const { transformToMoviesList } = useMovie()
+  const { selectedCategorie } = useCategorie()
 
   const { data: discoverMovies, error: discoverMoviesError } = useFetch(
-    'discover/movie',
+    `discover/${selectedCategorie}`,
   )
   const { data: trendingMovies, error: trendingMoviesError } = useFetch(
-    'trending/movie/day',
+    `trending/${selectedCategorie}/day`,
   )
 
   const setMovie = useCallback(() => {
@@ -69,7 +72,7 @@ const Home: React.FC = () => {
   const trending: IMovie[] = transformToMoviesList(trendingMovies)
   const movies: IMovie[] = transformToMoviesList(discoverMovies)
 
-  if (!selectedMovie || !trending || !movies) return <Text>Carregando...</Text>
+  if (!selectedMovie || !trending || !movies) return <Loading />
   if (discoverMoviesError || trendingMoviesError)
     return <Text>Ocorreu um erro</Text>
 
@@ -101,7 +104,7 @@ const Home: React.FC = () => {
           </Gradient>
         </>
       </Poster>
-      {genresList.map((genre) => (
+      {getGenresList(selectedCategorie).map((genre) => (
         <Movies key={genre.id} genre={genre} />
       ))}
     </Container>
