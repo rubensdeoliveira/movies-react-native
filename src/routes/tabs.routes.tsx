@@ -19,7 +19,7 @@ const TabRouter: React.FC = () => {
           if (route.name === 'Home') {
             iconName = 'home'
           } else if (route.name === 'Populares') {
-            iconName = 'question-circle'
+            iconName = 'star'
           } else {
             iconName = 'search'
           }
@@ -35,9 +35,9 @@ const TabRouter: React.FC = () => {
         activeBackgroundColor: 'black',
       }}
     >
-      <Tab.Screen name="Populares" component={PopularRoutes} />
-      <Tab.Screen name="Search" component={SearchRoutes} />
       <Tab.Screen name="Home" component={HomeRoutes} />
+      <Tab.Screen name="Search" component={SearchRoutes} />
+      <Tab.Screen name="Populares" component={PopularRoutes} />
     </Tab.Navigator>
   )
 }

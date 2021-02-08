@@ -28,14 +28,14 @@ const PopularMovies: React.FC = () => {
 
   const scrollX = useRef(new Animated.Value(0)).current
 
-  const { data, error } = useFetch('discover/movie')
+  const { data, error } = useFetch('movie/popular')
 
   if (!data) return <Text>Carregando...</Text>
   if (error) return <Text>Ocorreu um erro</Text>
 
   const movies: IMovie[] = [
     { key: 'fake-image-left' },
-    ...transformToMoviesList(data),
+    ...transformToMoviesList(data).slice(0, 10).reverse(),
     { key: 'fake-image-right' },
   ]
 
