@@ -14,7 +14,7 @@ Movies and series application. With this app you can search for movies and serie
 
 # Images
 
-<div style="display: flex; margin: 10px">
+<div>
   <img src="repo/imgs/1.png" alt="demo" height="425">
   <img src="repo/imgs/2.png" alt="demo" height="425">
   <img src="repo/imgs/3.png" alt="demo" height="425">
