@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
@@ -7,7 +8,7 @@ import {
   Container,
   MenuHero,
   MenuTag,
-  Play,
+  ButtonPlay,
   Separator,
   Tags,
   TextButton,
@@ -19,6 +20,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ selectedMovie }) => {
+  const navigation = useNavigation()
+
   return (
     <Container style={{ position: 'absolute' }}>
       <Tags>
@@ -33,12 +36,18 @@ const Hero: React.FC<HeroProps> = ({ selectedMovie }) => {
         )}
       </Tags>
       <MenuHero>
-        <Play>
+        <ButtonPlay>
           <FAIcon name="play" size={23} />
           <TextButtonPlay>Assistir</TextButtonPlay>
-        </Play>
+        </ButtonPlay>
 
-        <Button>
+        <Button
+          onPress={() => {
+            navigation.navigate('DetailMovie', {
+              movie_id: selectedMovie.key,
+            })
+          }}
+        >
           <Icon name="infocirlceo" size={22} color="#FFF" />
           <TextButton>Saiba mais</TextButton>
         </Button>

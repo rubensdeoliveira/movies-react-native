@@ -1,3 +1,4 @@
+import { RectButton } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
@@ -39,7 +40,7 @@ export const MenuHero = styled.View`
   align-items: center;
 `
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled(RectButton)`
   align-items: center;
 `
 
@@ -49,7 +50,7 @@ export const TextButton = styled.Text`
   margin-top: 3px;
 `
 
-export const Play = styled.TouchableOpacity`
+export const ButtonPlay = styled(RectButton)`
   flex-direction: row;
   background-color: #fff;
   width: 142px;

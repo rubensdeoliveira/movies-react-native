@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Text } from 'react-native'
 import { useMovie } from '../../hooks/movie'
@@ -15,6 +16,8 @@ interface HomeProps {
 }
 
 const Movies: React.FC<HomeProps> = ({ genre }) => {
+  const navigation = useNavigation()
+
   const { transformToMoviesList } = useMovie()
 
   const { data } = useFetch(`discover/movie?with_genres=${genre.id}`)
@@ -28,7 +31,14 @@ const Movies: React.FC<HomeProps> = ({ genre }) => {
       <Label>{genre.name}</Label>
       <MovieScroll horizontal>
         {movies.map((movie) => (
-          <MovieCard key={movie.key}>
+          <MovieCard
+            key={movie.key}
+            onPress={() => {
+              navigation.navigate('DetailMovie', {
+                movie_id: movie.key,
+              })
+            }}
+          >
             <MoviePoster resizeMode="cover" source={{ uri: movie.poster }} />
           </MovieCard>
         ))}

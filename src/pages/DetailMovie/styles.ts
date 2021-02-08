@@ -14,7 +14,7 @@ export const Poster = styled.ImageBackground`
 
 export const Title = styled.Text`
   font-size: 36px;
-  color: white;
+  color: #fff;
   font-weight: bold;
   margin-top: 5px;
   margin-left: 7px;
@@ -30,7 +30,7 @@ export const RowContainer = styled.View`
 
 export const Body1 = styled.Text`
   font-size: 13px;
-  color: white;
+  color: #fff;
   margin-right: 15px;
 `
 
@@ -46,14 +46,14 @@ export const ButtonPlay = styled(RectButton)`
 
 export const ButtonPlayText = styled.Text`
   font-size: 18px;
-  color: white;
+  color: #fff;
   font-weight: bold;
   margin-left: 10px;
 `
 
 export const Description = styled.Text`
   font-size: 15px;
-  color: white;
+  color: #fff;
   font-weight: bold;
   margin: 0 10px;
   margin-bottom: 20px;

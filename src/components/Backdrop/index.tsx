@@ -44,7 +44,7 @@ const Backdrop: React.FC<BackdropProps> = ({ movies, scrollX, itemSize }) => {
         }}
       />
       <Gradient
-        colors={['rgba(0, 0, 0, 0)', 'white']}
+        colors={['rgba(0, 0, 0, 0)', '#fff']}
         style={{
           position: 'absolute',
         }}

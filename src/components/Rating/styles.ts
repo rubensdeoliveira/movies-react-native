@@ -10,4 +10,5 @@ export const Container = styled.View`
 export const RatingNumber = styled.Text`
   margin-right: 4px;
   font-size: 14px;
+  color: #fff;
 `

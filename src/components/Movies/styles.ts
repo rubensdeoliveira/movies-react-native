@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 import { Dimensions } from 'react-native'
+import { RectButton } from 'react-native-gesture-handler'
 
 export const Container = styled.View`
   padding: 20px 0;
@@ -20,6 +21,6 @@ export const MoviePoster = styled.Image`
   height: 150px;
 `
 
-export const MovieCard = styled.View`
+export const MovieCard = styled(RectButton)`
   padding-right: 9px;
 `

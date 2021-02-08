@@ -29,15 +29,15 @@ const TabRouter: React.FC = () => {
       })}
       tabBarOptions={{
         activeTintColor: 'red',
-        inactiveTintColor: 'white',
+        inactiveTintColor: '#fff',
         showLabel: true,
         inactiveBackgroundColor: 'black',
         activeBackgroundColor: 'black',
       }}
     >
+      <Tab.Screen name="Populares" component={PopularRoutes} />
       <Tab.Screen name="Search" component={SearchRoutes} />
       <Tab.Screen name="Home" component={HomeRoutes} />
-      <Tab.Screen name="Populares" component={PopularRoutes} />
     </Tab.Navigator>
   )
 }

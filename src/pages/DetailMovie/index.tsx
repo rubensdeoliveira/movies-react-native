@@ -48,7 +48,7 @@ const DetailMovie: React.FC = () => {
       </RowContainer>
       {movie.genres ? <Genres genres={movie.genres} /> : null}
       <ButtonPlay>
-        <Icon name="play" size={18} color="white" />
+        <Icon name="play" size={18} color="#fff" />
         <ButtonPlayText>Assistir</ButtonPlayText>
       </ButtonPlay>
       <Description numberOfLines={3}>{movie.description}</Description>

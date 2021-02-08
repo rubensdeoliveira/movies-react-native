@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import {
   Animated,
@@ -13,7 +14,7 @@ import Rating from '../../components/Rating'
 import { useMovie } from '../../hooks/movie'
 import { useFetch } from '../../hooks/useFetch'
 import IMovie from '../../interfaces/IMovie'
-import { Container, PosterImage } from './styles'
+import { Container, ContainerButton, PosterImage } from './styles'
 
 const { width } = Dimensions.get('window')
 const SPACING = 10
@@ -21,6 +22,8 @@ const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2
 
 const PopularMovies: React.FC = () => {
+  const navigation = useNavigation()
+
   const { transformToMoviesList } = useMovie()
 
   const scrollX = useRef(new Animated.Value(0)).current
@@ -75,26 +78,40 @@ const PopularMovies: React.FC = () => {
 
           return (
             <View style={{ width: ITEM_SIZE }}>
-              <Animated.View
-                style={{
-                  marginHorizontal: SPACING,
-                  padding: SPACING * 2,
-                  alignItems: 'center',
-                  transform: [{ translateY }],
-                  backgroundColor: 'white',
-                  borderRadius: 34,
+              <ContainerButton
+                onPress={() => {
+                  navigation.navigate('DetailMovie', {
+                    movie_id: item.key,
+                  })
                 }}
               >
-                <PosterImage source={{ uri: item.poster }} />
-                <Text style={{ fontSize: 24 }} numberOfLines={1}>
-                  {item.title}
-                </Text>
-                <Rating rating={item.rating || 0} />
-                <Genres genres={item.genres || []} />
-                <Text style={{ fontSize: 12 }} numberOfLines={3}>
-                  {item.description}
-                </Text>
-              </Animated.View>
+                <Animated.View
+                  style={{
+                    marginHorizontal: SPACING,
+                    padding: SPACING * 2,
+                    alignItems: 'center',
+                    transform: [{ translateY }],
+                    backgroundColor: '#000',
+                    borderRadius: 34,
+                  }}
+                >
+                  <PosterImage source={{ uri: item.poster }} />
+                  <Text
+                    style={{ fontSize: 24, color: '#fff' }}
+                    numberOfLines={1}
+                  >
+                    {item.title}
+                  </Text>
+                  <Rating rating={item.rating || 0} />
+                  <Genres genres={item.genres || []} />
+                  <Text
+                    style={{ fontSize: 12, color: '#fff' }}
+                    numberOfLines={3}
+                  >
+                    {item.description}
+                  </Text>
+                </Animated.View>
+              </ContainerButton>
             </View>
           )
         }}
