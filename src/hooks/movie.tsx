@@ -10,6 +10,7 @@ interface IApiMovie {
   id: number
   original_language: string
   original_title: string
+  original_name: string
   overview: string
   popularity: number
   poster_path: string
@@ -35,6 +36,7 @@ interface IApiMovieData {
   id: number
   original_language: string
   original_title: string
+  original_name: string
   overview: string
   popularity: number
   poster_path: string
@@ -70,7 +72,10 @@ export const MovieProvider = ({ children }: IMovieProviderProps) => {
     (movieData: IApiMovieData) => {
       const movie: IMovie = {
         key: String(movieData.id),
-        title: movieData.original_title,
+        title:
+          selectedCategorie === 'movie'
+            ? movieData.original_title
+            : movieData.original_name,
         poster: `https://image.tmdb.org/t/p/w440_and_h660_face${movieData.poster_path}`,
         backdrop: `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${movieData.backdrop_path}`,
         rating: movieData.vote_average,
@@ -100,6 +105,7 @@ export const MovieProvider = ({ children }: IMovieProviderProps) => {
         ({
           id,
           original_title,
+          original_name,
           poster_path,
           backdrop_path,
           vote_average,
@@ -118,7 +124,8 @@ export const MovieProvider = ({ children }: IMovieProviderProps) => {
 
           return {
             key: String(id),
-            title: original_title,
+            title:
+              selectedCategorie === 'movie' ? original_title : original_name,
             poster: `https://image.tmdb.org/t/p/w440_and_h660_face${poster_path}`,
             backdrop: `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${backdrop_path}`,
             rating: vote_average,

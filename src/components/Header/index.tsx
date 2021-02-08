@@ -3,7 +3,7 @@ import { useCategorie } from '../../hooks/categorie'
 import { Container, Button, Menu } from './styles'
 
 const Header: React.FC = () => {
-  const { changeSelectedCategorie } = useCategorie()
+  const { changeSelectedCategorie, selectedCategorie } = useCategorie()
   return (
     <Container>
       <Button
@@ -11,14 +11,28 @@ const Header: React.FC = () => {
           changeSelectedCategorie('movie')
         }}
       >
-        <Menu>Filmes</Menu>
+        <Menu
+          style={{
+            opacity: selectedCategorie === 'movie' ? 1 : 0.4,
+            fontSize: selectedCategorie === 'movie' ? 20 : 15,
+          }}
+        >
+          Filmes
+        </Menu>
       </Button>
       <Button
         onPress={() => {
           changeSelectedCategorie('tv')
         }}
       >
-        <Menu>Séries</Menu>
+        <Menu
+          style={{
+            opacity: selectedCategorie === 'tv' ? 1 : 0.4,
+            fontSize: selectedCategorie === 'tv' ? 20 : 15,
+          }}
+        >
+          Séries
+        </Menu>
       </Button>
     </Container>
   )

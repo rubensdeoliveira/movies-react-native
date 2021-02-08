@@ -22,7 +22,9 @@ const WatchPage: React.FC = () => {
   return (
     <WebView
       source={{
-        uri: data.results.BR.link,
+        uri: data.results.BR
+          ? data.results.BR.link
+          : 'https://www.themoviedb.org/',
       }}
       style={{ marginTop: 20 }}
     />

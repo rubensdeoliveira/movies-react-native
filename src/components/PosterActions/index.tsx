@@ -43,7 +43,7 @@ const PosterActions: React.FC<PosterActionsProps> = ({ selectedMovie }) => {
             })
           }}
         >
-          <FAIcon name="play" size={23} />
+          <FAIcon name="play" size={15} />
           <TextButtonPlay>Assistir</TextButtonPlay>
         </ButtonPlay>
 
@@ -54,7 +54,7 @@ const PosterActions: React.FC<PosterActionsProps> = ({ selectedMovie }) => {
             })
           }}
         >
-          <Icon name="infocirlceo" size={22} color="#FFF" />
+          <Icon name="infocirlceo" size={18} color="#FFF" />
           <TextButton>Saiba mais</TextButton>
         </Button>
       </MenuPosterActions>

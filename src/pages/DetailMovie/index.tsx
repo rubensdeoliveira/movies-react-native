@@ -50,17 +50,15 @@ const DetailMovie: React.FC = () => {
         ) : null}
       </RowContainer>
       {movie.genres ? <Genres genres={movie.genres} /> : null}
-      <ButtonPlay>
+      <ButtonPlay
+        onPress={() => {
+          navigation.navigate('WatchPage', {
+            movie_id: movie.key,
+          })
+        }}
+      >
         <Icon name="play" size={18} color="#fff" />
-        <ButtonPlayText
-          onPress={() => {
-            navigation.navigate('WatchPage', {
-              movie_id: movie.key,
-            })
-          }}
-        >
-          Assistir
-        </ButtonPlayText>
+        <ButtonPlayText>Assistir</ButtonPlayText>
       </ButtonPlay>
       <Description numberOfLines={3}>{movie.description}</Description>
     </Container>

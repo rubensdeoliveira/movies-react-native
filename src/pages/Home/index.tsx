@@ -18,7 +18,11 @@ const Home: React.FC = () => {
   const [opacity] = useState(new Animated.Value(0))
 
   const { transformToMoviesList } = useMovie()
-  const { selectedCategorie } = useCategorie()
+  const {
+    selectedCategorie,
+    categorieChanged,
+    restoreCategorieChanged,
+  } = useCategorie()
 
   const { data: discoverMovies, error: discoverMoviesError } = useFetch(
     `discover/${selectedCategorie}`,
@@ -41,6 +45,13 @@ const Home: React.FC = () => {
   }, [movieNumber, trendingMovies, transformToMoviesList])
 
   useEffect(() => {
+    if (categorieChanged) {
+      const trending: IMovie[] = transformToMoviesList(trendingMovies)
+      setSelectedMovie(trending[0])
+      setMovieNumber(0)
+      restoreCategorieChanged()
+    }
+
     if (firstRender && trendingMovies) {
       setMovie()
       setFirstRender(false)
@@ -53,7 +64,14 @@ const Home: React.FC = () => {
     return () => {
       clearTimeout(timer)
     }
-  }, [setMovie, firstRender, trendingMovies, transformToMoviesList])
+  }, [
+    setMovie,
+    firstRender,
+    trendingMovies,
+    transformToMoviesList,
+    categorieChanged,
+    restoreCategorieChanged,
+  ])
 
   const onLoad = useCallback(() => {
     Animated.timing(opacity, {
@@ -74,14 +92,14 @@ const Home: React.FC = () => {
 
   if (!selectedMovie || !trending || !movies) return <Loading />
   if (discoverMoviesError || trendingMoviesError)
-    return <Text>Ocorreu um erro</Text>
+    return <Text>{discoverMovies}</Text>
 
   return (
     <Container>
       <StatusBar
         translucent
         backgroundColor="transparent"
-        barStyle="light-content"
+        barStyle="dark-content"
       />
       <Poster>
         <>
@@ -105,7 +123,7 @@ const Home: React.FC = () => {
         </>
       </Poster>
       {getGenresList(selectedCategorie).map((genre) => (
-        <Movies key={genre.id} genre={genre} />
+        <Movies key={genre.id} genre={genre} movies={movies} />
       ))}
     </Container>
   )

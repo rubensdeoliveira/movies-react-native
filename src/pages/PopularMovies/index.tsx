@@ -45,7 +45,11 @@ const PopularMovies: React.FC = () => {
   return (
     <Container>
       <Backdrop movies={movies} scrollX={scrollX} itemSize={ITEM_SIZE} />
-      <StatusBar hidden />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
         data={movies}

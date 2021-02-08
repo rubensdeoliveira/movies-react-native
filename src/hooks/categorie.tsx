@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useCallback } from 'react'
 
 interface ICategorieContextData {
+  categorieChanged: boolean
   selectedCategorie: 'movie' | 'tv'
   changeSelectedCategorie: (categorieName: 'movie' | 'tv') => void
+  restoreCategorieChanged: () => void
 }
 
 interface ICategorieProviderProps {
@@ -15,17 +17,25 @@ export const CategorieProvider = ({ children }: ICategorieProviderProps) => {
   const [selectedCategorie, setSelectedCategorie] = useState<'movie' | 'tv'>(
     'movie',
   )
+  const [categorieChanged, setCategorieChanged] = useState<boolean>(false)
 
-  const changeSelectedCategorie = useCallback(
-    async (categorie: 'movie' | 'tv') => {
-      setSelectedCategorie(categorie)
-    },
-    [],
-  )
+  const restoreCategorieChanged = useCallback(() => {
+    setCategorieChanged(false)
+  }, [])
+
+  const changeSelectedCategorie = useCallback((categorie: 'movie' | 'tv') => {
+    setCategorieChanged(true)
+    setSelectedCategorie(categorie)
+  }, [])
 
   return (
     <CategorieContext.Provider
-      value={{ selectedCategorie, changeSelectedCategorie }}
+      value={{
+        restoreCategorieChanged,
+        categorieChanged,
+        selectedCategorie,
+        changeSelectedCategorie,
+      }}
     >
       {children}
     </CategorieContext.Provider>
