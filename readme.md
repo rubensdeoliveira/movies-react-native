@@ -12,7 +12,7 @@ Movies and series application. With this app you can search for movies and serie
   </a>
 </p>
 
-<div styl>
+<div>
   <img src="repo/imgs/1.png" alt="demo" height="425" hspace="20">
   <img src="repo/imgs/2.png" alt="demo" height="425" hspace="20">
   <img src="repo/imgs/3.png" alt="demo" height="425">
